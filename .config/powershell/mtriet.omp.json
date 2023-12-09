@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "path",
+          "style": "diamond",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#f8f8f2",
+          "background": "#bd93f9",
+          "leading_diamond": "\u256d\u2500\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "template": "\uf07c {{ .Path }} ",
+          "properties": {
+            "style": "folder"
+          }
+        },
+        {
+          "background": "#ffb86c",
+          "foreground": "#f8f8f2",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "branch_icon": "",
+            "fetch_stash_count": true,
+            "fetch_status": false,
+            "fetch_upstream_icon": true
+          },
+          "style": "powerline",
+          "template": " \ue725({{ .UpstreamIcon }}{{ .HEAD }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }})",
+          "type": "git"
+        },
+        {
+          "type": "time",
+          "style": "diamond",
+          "foreground": "#f8f8f2",
+          "background": "#ff79c6",
+          "leading_diamond": "<transparent,background>\ue0b0</>",
+          "trailing_diamond": "\ue0b0",
+          "template": " \u2665 {{ .CurrentDate | date .Format }} ",
+          "properties": {
+            "time_format": "15:04"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "node",
+          "style": "diamond",
+          "foreground": "#3C873A",
+          "background": "#303030",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
+          "properties": {
+            "fetch_package_manager": true,
+            "npm_icon": " <#cc3a3a>\ue5fa</> ",
+            "yarn_icon": " <#348cba>\uf61a</>"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#bd93f9",
+          "template": "\u2570\u2500"
+        },
+        {
+          "type": "exit",
+          "style": "plain",
+          "foreground": "#bd93f9",
+          "foreground_templates": ["{{ if gt .Code 0 }}#ef5350{{ end }}"],
+          "template": "❯{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} ",
+          "properties": {
+            "always_enabled": true
+          }
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "osc99": true
+}
