@@ -24,13 +24,22 @@ keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 -- Jumplist
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
+-- Move to first/last in current line
+keymap.set("n", "<s-q>", "^")
+keymap.set("n", "<s-e>", "$")
+
 -- New tab
 keymap.set("n", "te", ":tabedit<Return>", { silent = true })
+
+--move between tabs
 keymap.set("n", "<s-tab>", ":bp<Return>", opts)
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", { silent = true })
 keymap.set("n", "sv", ":vsplit<Return>", { silent = true })
+
+-- Close window/buffer
+keymap.set("n", "sc", ":bd<Return>", { silent = true })
 
 -- Move window
 keymap.set("n", "sh", "<C-w>h")
@@ -42,10 +51,14 @@ keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
+-- Rename
+keymap.set("n", "<leader>rn", ":IncRename ")
+
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
   vim.diagnostic.goto_next()
 end, opts)
+
 keymap.set("n", "<leader>r", function()
   require("craftzdog.utils").replaceHexWithHSL()
 end)
